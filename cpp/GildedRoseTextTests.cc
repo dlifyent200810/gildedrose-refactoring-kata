@@ -2,9 +2,7 @@
 
 #include <iostream>
 
-using namespace std;
-
-ostream& operator<<(ostream& s, Item& item)
+std::ostream& operator<<(std::ostream& s, Item& item)
 {
     s << item.name << ", " << item.sellIn << ", " << item.quality;
     return s;
@@ -12,7 +10,7 @@ ostream& operator<<(ostream& s, Item& item)
 
 int main()
 {
-    vector<Item> items;
+    std::vector<Item> items;
     items.push_back(Item("+5 Dexterity Vest", 10, 20));
     items.push_back(Item("Aged Brie", 2, 0));
     items.push_back(Item("Elixir of the Mongoose", 5, 7));
@@ -25,17 +23,17 @@ int main()
     items.push_back(Item("Conjured Mana Cake", 3, 6));
     GildedRose app(items);
 
-    cout << "OMGHAI!" << endl;
+    std::cout << "OMGHAI!" << '\n';
 
     for (int day = 0; day <= 30; day++)
     {
-        cout << "-------- day " << day << " --------" << endl;
-        cout << "name, sellIn, quality" << endl;
-        for (vector<Item>::iterator i = items.begin(); i != items.end(); i++)
+        std::cout << "-------- day " << day << " --------" << '\n';
+        std::cout << "name, sellIn, quality" << '\n';
+        for (std::vector<Item>::iterator i = items.begin(); i != items.end(); i++)
         {
-            cout << *i << endl;
+            std::cout << *i << '\n';
         }
-        cout << endl;
+        std::cout << '\n';
 
         app.updateQuality();
     }

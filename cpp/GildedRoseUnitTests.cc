@@ -2,7 +2,7 @@
 
 #include "GildedRose.h"
 
-using ::std::string;
+using std::string;
 
 
 bool operator==(Item const& lh, Item const& rh) {
@@ -11,7 +11,7 @@ bool operator==(Item const& lh, Item const& rh) {
            lh.quality == rh.quality;
 }
 
-std::ostream& operator<< (::std::ostream& stream, Item const& item) {
+std::ostream& operator<< (std::ostream& stream, Item const& item) {
     stream << "[" << item.name << ", sellin: " << item.sellIn << ", quality: " << item.quality << "]";
     return stream;
 }

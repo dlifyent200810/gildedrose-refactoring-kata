@@ -1,10 +1,10 @@
 #include "GildedRose.h"
 
 
-GildedRose::GildedRose(::std::vector<Item> const& items) : items(items)
+GildedRose::GildedRose(std::vector<Item> const& items) : items(items)
 {}
 
-GildedRose::GildedRose(::std::vector<Item> && items) : items(::std::move(items))
+GildedRose::GildedRose(std::vector<Item> && items) : items(std::move(items))
 {}
 
 void GildedRose::updateQuality()
@@ -17,7 +17,7 @@ void GildedRose::updateQuality()
             {
                 if (items[i].name != "Sulfuras, Hand of Ragnaros")
                 {
-                    items[i].quality = items[i].quality - 1;
+                    items[i].quality--;
                 }
             }
         }
@@ -25,7 +25,7 @@ void GildedRose::updateQuality()
         {
             if (items[i].quality < 50)
             {
-                items[i].quality = items[i].quality + 1;
+                items[i].quality++;
 
                 if (items[i].name == "Backstage passes to a TAFKAL80ETC concert")
                 {
@@ -33,7 +33,7 @@ void GildedRose::updateQuality()
                     {
                         if (items[i].quality < 50)
                         {
-                            items[i].quality = items[i].quality + 1;
+                            items[i].quality++;
                         }
                     }
 
@@ -41,7 +41,7 @@ void GildedRose::updateQuality()
                     {
                         if (items[i].quality < 50)
                         {
-                            items[i].quality = items[i].quality + 1;
+                            items[i].quality++;
                         }
                     }
                 }
@@ -50,7 +50,7 @@ void GildedRose::updateQuality()
 
         if (items[i].name != "Sulfuras, Hand of Ragnaros")
         {
-            items[i].sellIn = items[i].sellIn - 1;
+            items[i].sellIn--;
         }
 
         if (items[i].sellIn < 0)
@@ -63,22 +63,34 @@ void GildedRose::updateQuality()
                     {
                         if (items[i].name != "Sulfuras, Hand of Ragnaros")
                         {
-                            items[i].quality = items[i].quality - 1;
+                            items[i].quality--;
                         }
                     }
                 }
                 else
                 {
-                    items[i].quality = items[i].quality - items[i].quality;
+                    items[i].quality = 0;
                 }
             }
-            else
+            else if (items[i].quality < 50)
             {
-                if (items[i].quality < 50)
-                {
-                    items[i].quality = items[i].quality + 1;
-                }
+                items[i].quality++;
             }
         }
+    }
+}
+void GildedRose::updateBACKSTAGE_PASS(Item & item) 
+{
+    item.sellIn--;
+    if(item.sellIn > 5) 
+    {
+        item.quality += 2;
+    }
+    else if(item.sellIn <= 0) 
+    {
+        item.quality = 0;
+    }
+    else if(item.sellIn < 5) {
+        item.quality += 3;
     }
 }
