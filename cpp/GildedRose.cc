@@ -20,33 +20,28 @@ void GildedRose::updateQuality()
         {
             if (items[i].quality > 0)
             {
-                
                 items[i].quality--;
-            
             }
         }
-        else
+        else if (items[i].quality < 50)
         {
-            if (items[i].quality < 50)
+            items[i].quality++;
+
+            if (items[i].name == BACKSTAGE_PASS)
             {
-                items[i].quality++;
-
-                if (items[i].name == BACKSTAGE_PASS)
+                if (items[i].sellIn < 11)
                 {
-                    if (items[i].sellIn < 11)
+                    if (items[i].quality < 50)
                     {
-                        if (items[i].quality < 50)
-                        {
-                            items[i].quality++;
-                        }
+                        items[i].quality++;
                     }
+                }
 
-                    if (items[i].sellIn < 6)
+                if (items[i].sellIn < 6)
+                {
+                    if (items[i].quality < 50)
                     {
-                        if (items[i].quality < 50)
-                        {
-                            items[i].quality++;
-                        }
+                        items[i].quality++;
                     }
                 }
             }
