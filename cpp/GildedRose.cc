@@ -7,13 +7,18 @@ GildedRose::GildedRose(::std::vector<Item> const& items) : items(items)
 GildedRose::GildedRose(::std::vector<Item> && items) : items(::std::move(items))
 {}
 
+void GildedRose::qulityIncrement(const int &i)
+{
+    items[i].quality = items[i].quality + 1;
+}
+
 void GildedRose::negativeSellIn(const int &i)
 {
     if (items[i].name == "Aged Brie")
     {
         if (items[i].quality < 50)
         {
-            items[i].quality = items[i].quality + 1;
+            qulityIncrement(i);
         }
     }
     else
@@ -55,18 +60,18 @@ void GildedRose::updateQuality()
         {
             if (items[i].quality < 50)
             {
-                items[i].quality = items[i].quality + 1;
+                qulityIncrement(i);
 
                 if (items[i].name == "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (items[i].sellIn < 11)
                     {
-                        items[i].quality = items[i].quality + 1;
+                        qulityIncrement(i);
                     }
 
                     if (items[i].sellIn < 6)
                     {
-                        items[i].quality = items[i].quality + 1;
+                        qulityIncrement(i);
                     }
                 }
             }
