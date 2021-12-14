@@ -12,9 +12,15 @@ void GildedRose::updateQuality()
 	for (int i = 0; i < items.size(); i++)
 	{
 		Item& item = items[i];
+
+		if (item.name == "Sulfuras, Hand of Ragnaros")
+		{
+			continue;
+		}
+
 		if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert")
 		{
-			if (item.quality > 0 && item.name != "Sulfuras, Hand of Ragnaros")
+			if (item.quality > 0)
 			{
 				item.quality--;
 			}
@@ -40,10 +46,7 @@ void GildedRose::updateQuality()
 			}
 		}
 
-		if (item.name != "Sulfuras, Hand of Ragnaros")
-		{
-			item.sellIn = item.sellIn - 1;
-		}
+		item.sellIn--;
 
 		if (item.sellIn < 0)
 		{
