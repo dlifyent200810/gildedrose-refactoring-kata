@@ -55,20 +55,23 @@ void GildedRose::updateQuality()
         {
             if (items[i].name !=AGED_BRIE )
             {
-                if (items[i].name != BACKSTAGE_PASS && items[i].quality > 0 && items[i].name != SULFURAS)
+                if (items[i].name != BACKSTAGE_PASS)
                 {
+                    if (items[i].quality > 0 && items[i].name != SULFURAS)
+                    {
                             items[i].quality--;
+                    }
                 }
                 else
                 {
-                    items[i].quality = 0;
+                    items[i].quality = items[i].quality - items[i].quality;
                 }
             }
             else
             {
                 if (items[i].quality < 50)
                 {
-                    items[i].quality--;
+                    items[i].quality++;
                 }
             }
         }
