@@ -51,12 +51,6 @@ void GildedRose::updateQuality()
 
 		if (item.sellIn < 0)
 		{
-			if (item.name == "Backstage passes to a TAFKAL80ETC concert")
-			{
-				item.quality = 0;
-				continue;
-			}
-
 			if (item.name != "Aged Brie")
 			{
 				decraseItemQuality(item);
@@ -64,6 +58,11 @@ void GildedRose::updateQuality()
 			else if (item.quality < 50)
 			{
 				item.quality++;
+			}
+
+			if (item.name == "Backstage passes to a TAFKAL80ETC concert")
+			{
+				item.quality = 0;
 			}
 		}
 	}
