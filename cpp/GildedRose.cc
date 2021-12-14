@@ -16,62 +16,62 @@ const std::string SULFURAS =  "Sulfuras, Hand of Ragnaros";
 
 void GildedRose::updateQuality()
 {
-    for (int i = 0; i < items.size(); i++)
+    for (Item& item : items)
     {
-        if (items[i].name != AGED_BRIE && items[i].name != BACKSTAGE_PASS)
+        if (item.name != AGED_BRIE && item.name != BACKSTAGE_PASS)
         {
-            if (items[i].quality > 0 && items[i].name != SULFURAS)
+            if (item.quality > 0 && item.name != SULFURAS)
             {
-                    items[i].quality--;
+                    item.quality--;
             }
         }
         else
         {
-            if (items[i].quality < 50)
+            if (item.quality < 50)
             {
-                items[i].quality++;
+                item.quality++;
 
-                if (items[i].name == BACKSTAGE_PASS)
+                if (item.name == BACKSTAGE_PASS)
                 {
-                    if (items[i].sellIn < 11 && items[i].quality < 50)
+                    if (item.sellIn < 11 && item.quality < 50)
                     {
-                            items[i].quality++;
+                            item.quality++;
                     }
 
-                    if (items[i].sellIn < 6 && items[i].quality < 50)
+                    if (item.sellIn < 6 && item.quality < 50)
                     {
-                            items[i].quality++;
+                            item.quality++;
                     }
                 }
             }
         }
 
-        if (items[i].name != SULFURAS)
+        if (item.name != SULFURAS)
         {
-            items[i].sellIn--;
+            item.sellIn--;
         }
 
-        if (items[i].sellIn < 0)
+        if (item.sellIn < 0)
         {
-            if (items[i].name !=AGED_BRIE )
+            if (item.name !=AGED_BRIE )
             {
-                if (items[i].name != BACKSTAGE_PASS)
+                if (item.name != BACKSTAGE_PASS)
                 {
-                    if (items[i].quality > 0 && items[i].name != SULFURAS)
+                    if (item.quality > 0 && item.name != SULFURAS)
                     {
-                            items[i].quality--;
+                            item.quality--;
                     }
                 }
                 else
                 {
-                    items[i].quality = items[i].quality - items[i].quality;
+                    item.quality = item.quality - item.quality;
                 }
             }
             else
             {
-                if (items[i].quality < 50)
+                if (item.quality < 50)
                 {
-                    items[i].quality++;
+                    item.quality++;
                 }
             }
         }
