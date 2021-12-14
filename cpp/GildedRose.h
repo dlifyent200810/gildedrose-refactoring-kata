@@ -23,6 +23,6 @@ public:
 private:
     void updateBACKSTAGE_PASS(Item & item);
     void updateAGED_BRIE(Item & item);
-    void updateSULFURAS(Item & item);
+    void updateREGULAR(Item & item);
 };
 
