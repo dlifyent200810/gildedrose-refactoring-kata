@@ -54,7 +54,7 @@ void GildedRose::updateQuality()
                     {
                         if (items[i].name != "Sulfuras, Hand of Ragnaros")
                         {
-                            items[i].quality = items[i].quality - 1;
+                            items[i].quality--;
                         }
                     }
                 }
