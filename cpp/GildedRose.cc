@@ -48,25 +48,19 @@ void GildedRose::updateQuality()
 			{
 				if (item.name != "Backstage passes to a TAFKAL80ETC concert")
 				{
-					if (item.quality > 0)
+					if (item.quality > 0 && item.name != "Sulfuras, Hand of Ragnaros")
 					{
-						if (item.name != "Sulfuras, Hand of Ragnaros")
-						{
-							item.quality = item.quality - 1;
-						}
+						item.quality--;
 					}
 				}
 				else
 				{
-					item.quality = item.quality - item.quality;
+					item.quality = 0;
 				}
 			}
-			else
+			else if (item.quality < 50)
 			{
-				if (item.quality < 50)
-				{
-					item.quality = item.quality + 1;
-				}
+				item.quality++;
 			}
 		}
 	}
