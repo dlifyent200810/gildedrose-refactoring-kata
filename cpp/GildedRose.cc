@@ -11,14 +11,13 @@ void GildedRose::updateQuality()
 {
     for (int i = 0; i < items.size(); i++)
     {
-        if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert")
+        if (items[i].name == "Foo")
         {
             if (items[i].quality > 0)
             {
-                if (items[i].name != "Sulfuras, Hand of Ragnaros")
-                {
-                    items[i].quality--;
-                }
+                
+                items[i].quality--;
+            
             }
         }
         else
