@@ -13,7 +13,6 @@ public:
 
 class GildedRose
 {
-
 public:
     std::vector<Item> items;
     explicit GildedRose(std::vector<Item> && items);
@@ -23,5 +22,7 @@ public:
 
 private:
     void updateBACKSTAGE_PASS(Item & item);
+    void updateAGED_BRIE(Item & item);
+    void updateSULFURAS(Item & item);
 };
 
