@@ -24,5 +24,6 @@ public:
 private:
     void negativeSellIn(const int &i);
 
+    void qualityAboveZero(const int &i);
 };
 
