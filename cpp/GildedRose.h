@@ -18,7 +18,7 @@ private:
     const string AB = "Aged Brie";
     const string BPTATC = "Backstage passes to a TAFKAL80ETC concert";
     const string SHOR = "Sulfuras, Hand of Ragnaros";
-    void increaseItemAtIndexByOne(int sellInOfItem); 
+    void increaseItemByOneIfSellInLessThan(int sellInOfItem, Item& item); 
 
 public:
     ::std::vector<Item> items;
@@ -27,3 +27,4 @@ public:
     
     void updateQuality();
 };
+
