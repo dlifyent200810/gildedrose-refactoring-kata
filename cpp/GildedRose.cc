@@ -1,50 +1,50 @@
 #include <GildedRose.h>
 
-
 GildedRose::GildedRose(::std::vector<Item> const& items) : items(items)
 {}
 
 GildedRose::GildedRose(::std::vector<Item> && items) : items(::std::move(items))
 {}
 
-void GildedRose::increaseItemAtIndexByOne(int sellInOfItem) 
+void GildedRose::increaseItemByOneIfSellInLessThan(int sellInOfItem, Item& item) 
 {
-    if (items[i].sellIn < sellInOfItem && items[i].quality < fifty)
-        items[i].quality++;
+    if (item.sellIn < sellInOfItem && item.quality < fifty)
+        item.quality++;
 }
+
 void GildedRose::updateQuality()
 {
-    for (int i = 0; i < items.size(); i++)
+     
+    for (Item& item: items)
     {
-        if (items[i].name != AB && items[i].name != BPTATC)
-            if (items[i].name != SHOR && items[i].quality > 0)
-                items[i].quality--;
+        if (item.name != AB && item.name != BPTATC)
+            if (item.name != SHOR && item.quality > 0)
+                item.quality--;
                 
-        else if (items[i].quality < fifty)
+        else if (item.quality < fifty)
         {
-            items[i].quality++;
-            if (items[i].name == BPTATC)
+            item.quality++;
+            if (item.name == BPTATC)
             {
-                increaseItemAtIndexByOne(11);
-                increaseItemAtIndexByOne(6);
+                increaseItemByOneIfSellInLessThan(11, item);
+                increaseItemByOneIfSellInLessThan(6, item);
             }
         }
-        if (items[i].name != SHOR)
-            items[i].sellIn--;
+        if (item.name != SHOR)
+            item.sellIn--;
             
-        if (items[i].sellIn < 0)
+        if (item.sellIn < 0)
         {
-            if (items[i].name != AB)
+            if (item.name != AB)
             {
-                if (items[i].name != BPTATC)
-                    if (items[i].name != SHOR && items[i].quality > 0)
-                        items[i].quality--;
+                if (item.name != BPTATC)
+                    if (item.name != SHOR && item.quality > 0)
+                        item.quality--;
                 else
-                    items[i].quality = 0;
+                    item.quality = 0;
             }
-            else if (items[i].quality < fifty)
-                items[i].quality++;
+            else if (item.quality < fifty)
+                item.quality++;
         }
     }
 }
-
